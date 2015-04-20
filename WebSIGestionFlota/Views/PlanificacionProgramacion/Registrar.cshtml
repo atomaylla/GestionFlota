@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "View1";
+}
+
+@section scripts {
+
+    <script src="~/Scripts/page.js"></script>
+
+}
+
+
+
+
+<br />
+<div class="col-md-12">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li>@Html.ActionLink("Listado Planificacion", "Index", "PlanificacionProgramacion")</li>
+            <li>@Html.ActionLink("Registrar Planificacion", "Registrar", "PlanificacionProgramacion")</li>
+
+        </ul>
+    </div>
+    <div class="col-md-9 " style="border:0px solid #000;">
+
+        <div class="col-md-12"><h3>Planificacion de Programación de Unidades</h3></div>
+        <br/>
+        <div class="col-lg-12" style="border:0px solid #000">
+           
+            <div class="col-md-12 col-lg-12" style="border:0px solid #000">
+                <div class="col-md-4 col-lg-4" ><input type="radio" />Fecha de Inicio de Servicio</div>
+                <div class=" col-md-8 col-lg-8" ><input type="text" /></div>
+                
+            </div>
+            <div class="col-md-12 col-lg-12" style="border:0px solid #000">
+                <div class="col-md-4 col-lg-4"><input type="radio" />Tipo Servicio</div>
+                <div class="col-md-4 col-lg-4"><select><option>GNC</option></select></div>
+                <div class="col-md-4 col-lg-4" ><input type="button" value="Ver Listado Solicitudes"/></div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br/>
+        <div class="col-md-12"><h4>Listado de solicitudes por planificar</h4></div>
+        <div class="form-group">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Cliente</th>
+                            <th>Fecha Inicio Servicio</th>
+                            <th>Tipo Servicio</th>
+                            <th>Origen</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Repsol</td>
+                            <td>19/02/2015</td>
+                            <td>GNC</td>
+                            <td>Base Pampilla</td>
+                            <td><a href="#">Ver </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Repsol</td>
+                            <td>19/02/2015</td>
+                            <td>GNC</td>
+                            <td>Base Pampilla</td>
+                            <td><a href="#">Ver </a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Repsol</td>
+                            <td>19/02/2015</td>
+                            <td>GNC</td>
+                            <td>Base Pampilla</td>
+                            <td><a href="#">Ver </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

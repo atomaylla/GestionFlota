@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "CargarIti";
+   
+}
+@model List<EntityLayer.Itinerario>
+
+
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Fecha Servicio</th>
+                <th>Punto Origen</th>
+                <th>Punto Destino</th>
+                <th>Tipo Acción</th>
+                <th>Cantidad</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @*@foreach (var item in (List<EntityLayer.Itinerario>)ViewData["listitinerarios"])*@
+@{int counter = 1;
+            foreach (var item in (List<EntityLayer.Itinerario>)ViewData["listitinerarios"])
+            {
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td> @item.fechaServicio</td>
+                    <td>@item.origen</td>
+                    <td>@item.destino</td>
+                    <td>@item.tipoAccion</td>
+                    <td>@item.cantidad</td>
+                    <td><a href="#">Eliminar</a></td>
+                </tr>
+                counter++;
+            }
+     }
+        </tbody>
+    </table>
+</div>
+

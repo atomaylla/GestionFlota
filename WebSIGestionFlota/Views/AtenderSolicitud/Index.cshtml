@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "View1";
+}
+@section scripts {
+
+    <script src="~/Scripts/page.js"></script>
+
+}
+
+
+
+<br />
+<div class="col-md-12">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li>@Html.ActionLink("Registrar Atencion de Solicitud de Planificacion", "Index", "AtenderSolicitud")</li>
+            <li>@Html.ActionLink("Listado Solicitudes Aprobadas", "SolicitudesAprobadas", "AtenderSolicitud")</li>
+            <li>@Html.ActionLink("Listado Solicitudes Rechazadas", "SolicitudesRechazadas", "AtenderSolicitud")</li>
+        </ul>
+    </div>
+    <div class="col-md-9 " style="border:0px solid #000;">
+
+        <div><h3>Registrar Atención de Solicitud de Programación</h3></div>
+        <div class="col-lg-12" style="border:0px solid #000">
+            <form id="formlistar" method="post">
+                <div class="col-md-12 col-lg-12" style="border:0px solid #000">
+                    <div class="col-md-4 col-lg-4"><input type="radio" id="opcionlist" name="opcionlist" value="fecha"/>Fecha de Servicio</div>
+                    <div class=" col-md-8 col-lg-8"><input type="text" id="fechaservicio" name="fechaservicio" /></div>
+
+                </div>
+                <div class="col-md-12 col-lg-12" style="border:0px solid #000">
+                    <div class="col-md-4 col-lg-4"><input type="radio" id="opcionlist" name="opcionlist" value="tiposervicio" />Tipo Servicio</div>
+                    <div class="col-md-4 col-lg-4">
+                        <select name="cbotiposervicio" id="cbotiposervicio"class="form-control">
+                            <option value="0">Seleccionar</option>
+                            <option value="1">GNC</option>
+                            <option value="2">GLP</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-lg-4"><input type="button" id="btlistar" value="Ver Lista de Solicitudes" /></div>
+                </div>
+
+            </form>
+        </div>
+        <div class="form-group" id="listsolicitudes">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Selecionar</th>
+                            <th>Cliente</th>
+                            <th>Fecha Servicio</th>
+                            <th>Tipo Servicio</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" colspan="5">No hay solicitudes para mostrar</th>
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <button id="agreite" type="submit" class="btn btn-default">
+                Cancelar
+            </button>
+            <button id="aprobarsol" type="submit" class="btn btn-default">
+                Aprobar
+            </button>
+            <button id="rechazarsol" type="submit" class="btn btn-default">
+                Rechazar
+            </button></div>
+    </div>
+</div>

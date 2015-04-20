@@ -1,0 +1,123 @@
+﻿@section scripts {
+
+    <script src="~/Scripts/page.js"></script>
+
+}
+
+
+<br />
+<div class="col-md-12">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li>@Html.ActionLink("Listado Solicitud", "Index", "SolicitudProgramacion")</li>
+            <li>@Html.ActionLink("Registrar Solicitud", "Registrar", "SolicitudProgramacion")</li>
+
+        </ul>
+    </div>
+    <div class="col-md-9 " style="border:0px solid #000;">
+        <div><h3>Registrar Solicitud de Planificación</h3></div>
+        <form action="/SolicitudProgramacion/Enviar" method="post">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Cliente</label>
+                <select name="cboclientes" class="form-control">
+                    <option value="0">Seleccionar</option>
+                    @foreach (var item in ViewData["Cliente"] as List<EntityLayer.Cliente>)
+                    {
+
+                        <option value="@item.codCliente">
+                            @item.razonSocial
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Fecha de Servicio</label>
+                <input id="datepicker" type="text" class="form-control" name="fechaservicio">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Tipo de Servicio</label>
+                <select name="cbotiposervicio" class="form-control">
+                    <option value="0">Seleccionar</option>
+                    <option value="1">GNC</option>
+                    <option value="2">GLP</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+               
+                <div><button id="agregar-iti" onclick="return false">Agregar Itinerario</button></div>
+
+            </div>
+
+            <h3>Lista de itinerarios</h3>
+            <div id="listitinerario" class="form-group">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha Servicio</th>
+                            <th>Punto Origen</th>
+                            <th>Punto Destino</th>
+                            <th>Tipo Acción</th>
+                            <th>Cantidad</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                       
+                            <tr>
+                                <td scope="row" colspan="7">No hay itinerarios para mostrar</td>
+                                
+                            </tr>
+
+                       
+                    </tbody>
+                    </table>
+</div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Cancelar</button>
+                <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+
+        </form>
+        <div id="dialog-form" style="">
+            <form id="formitinerario" onsubmit="return false">
+                <p>Agregar Itinerario</p>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha de Itinerario</label>
+                    <input type="text" class="form-control" name="fechaservicio" id="datepickeriti">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Punto Origen</label>
+                    <select name="origen" class="form-control">
+                        <option value="0">Seleccionar</option>
+                        <option value="Base Pampilla">Base Pampilla</option>
+                        <option value="Base Pampilla">Local Cliente</option>
+                        <option value="Base Pampilla">Base</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Punto Destino</label>
+                    <select name="destino" class="form-control">
+                        <option value="0">Seleccionar</option>
+                        <option value="Base Pampilla">Base Pampilla</option>
+                        <option value="Base Pampilla">Local Cliente</option>
+                        <option value="Base Pampilla">Base</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tipo de Acciion</label>
+                    <input type="radio" name="tipoaccion" value="carga"/>Carga
+                    <input type="radio" name="tipoaccion" value="descarga"/>Descarga
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Cantidad</label>
+                    <input type="text" class="form-control" name="cantidad" >
+                </div>
+                <button id="agreite" type="submit" class="btn btn-default">Agregar</button>
+                <button id="agreite" type="submit" class="btn btn-default">Cancelar</button>
+            </form>
+        </div>
+    </div>
+</div>
