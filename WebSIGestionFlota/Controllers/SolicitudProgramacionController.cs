@@ -34,7 +34,7 @@ namespace WebSIGestionFlota.Controllers
         {
             List<Cliente> listclient = nSolicitud.obtenerClientes();
             ViewData["Cliente"]= listclient;
-          //  TempData["listitinerarios"] = null;
+         
             return View();
            
 
