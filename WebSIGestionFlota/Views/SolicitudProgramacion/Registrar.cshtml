@@ -16,10 +16,10 @@
     </div>
     <div class="col-md-9 " style="border:0px solid #000;">
         <div><h3>Registrar Solicitud de Planificación</h3></div>
-        <form action="/SolicitudProgramacion/Enviar" method="post">
+        <form action="/SolicitudProgramacion/Enviar" method="post" onsubmit="return validarform(); ">
             <div class="form-group">
                 <label for="exampleInputPassword1">Cliente</label>
-                <select name="cboclientes" class="form-control">
+                <select id="cboclientes" name="cboclientes" class="form-control">
                     <option value="0">Seleccionar</option>
                     @foreach (var item in ViewData["Cliente"] as List<EntityLayer.Cliente>)
                     {
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Tipo de Servicio</label>
-                <select name="cbotiposervicio" class="form-control">
+                <select id="cbotiposervicio" name="cbotiposervicio" class="form-control">
                     <option value="0">Seleccionar</option>
                     <option value="1">GNC</option>
                     <option value="2">GLP</option>
@@ -118,6 +118,12 @@
                 <button id="agreite" type="submit" class="btn btn-default">Agregar</button>
                 <button id="agreite" type="submit" class="btn btn-default">Cancelar</button>
             </form>
+        </div>
+        <div id="dialog" title="Mensaje">
+            <p>prueba</p>
+        </div>
+        <div id="dialog-confirm" title="Empty the recycle bin?">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
         </div>
     </div>
 </div>

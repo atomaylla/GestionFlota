@@ -2,7 +2,73 @@
     //alert("dd");
     //var $j = jQuery.noConflict();
     //$j('.openpopup').magnificPopup({ type: 'inline', midClick: true });
-  
+   // alert("df");
+    $('#calendarionew').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
+        },
+        defaultDate: '2015-04-12',
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: [
+            {
+                title: 'All Day Event',
+                start: '2015-04-01'
+            },
+            {
+                title: 'Long Event',
+                start: '2015-04-07',
+                end: '2015-04-10'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2015-04-09T16:00:00'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2015-04-16T16:00:00'
+            },
+            {
+                title: 'Conference',
+                start: '2015-04-11',
+                end: '2015-04-13'
+            },
+            {
+                title: 'Meeting',
+                start: '2015-04-12T10:30:00',
+                end: '2015-04-12T12:30:00'
+            },
+            {
+                title: 'Lunch',
+                start: '2015-04-12T12:00:00'
+            },
+            {
+                title: 'Meeting',
+                start: '2015-04-12T14:30:00'
+            },
+            {
+                title: 'Happy Hour',
+                start: '2015-04-12T17:30:00'
+            },
+            {
+                title: 'Dinner',
+                start: '2015-04-12T20:00:00'
+            },
+            {
+                title: 'Birthday Party',
+                start: '2015-04-13T07:00:00'
+            },
+            {
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2015-04-28'
+            }
+        ]
+    });
     $('#aprobarsol').click(function () {
         var studentListVal = null;
         studentListVal = [];
@@ -98,7 +164,7 @@
 
         dialog.dialog("open");
     });
-
+  
    
 });
 $(function () {
@@ -107,3 +173,47 @@ $(function () {
     $("#fechaservicio").datepicker({ dateFormat: 'dd-mm-yy' });
    
 });
+$(function () {
+    $("#dialog").dialog({
+        modal:true,
+        autoOpen: false,
+        show: {
+            effect: "blind",
+            duration: 1000
+        },
+        hide: {
+            effect: "explode",
+            duration: 1000
+        }
+    });
+
+});
+$(function () {
+    $("#dialog-confirm").dialog({
+        resizable: false,
+        height: 140,
+        modal: true,
+        autoOpen: false,
+        buttons: {
+            "Aceptar": function () {
+                $(this).dialog("close");
+                
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+               
+            }
+        }
+    });
+});
+function validarform() {
+    if ($("#cboclientes").val() == "0") { $("#dialog p").text("Ingresar Cliente"); $("#dialog").dialog("open"); return false; }
+    if ($("#datepicker").val() == "") { $("#dialog p").text("Ingresar Fecha Servicio"); $("#dialog").dialog("open"); return false; }
+    if ($("#cbotiposervicio").val() == "0") { $("#dialog p").text("Ingresar Tipo Servicio"); $("#dialog").dialog("open"); return false; }
+
+   // $("#dialog-confirm").dialog("open");
+    return true;
+    
+    
+   
+}
