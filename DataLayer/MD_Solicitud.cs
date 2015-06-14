@@ -124,12 +124,13 @@ namespace DataLayer
             return nrosolicitud;
         }
 
-        public void registrarItinerario(string origen, string destino, DateTime fechaservicio, string volcarga, string voldescarga,int nrosolicitud)
+        public void registrarItinerario(string origen, string destino, DateTime fechaservicio, string horasalida, string volcarga, string voldescarga,int nrosolicitud)
         {
             SqlCommand _comandoIti = oaccesodedatos.CrearComando(CommandType.StoredProcedure, "registraritinerario");
             _comandoIti.Parameters.Add(new SqlParameter("@origen", origen));
             _comandoIti.Parameters.Add(new SqlParameter("@destino", destino));
             _comandoIti.Parameters.Add(new SqlParameter("@fechasalida", fechaservicio));
+            _comandoIti.Parameters.Add(new SqlParameter("@horasalida", horasalida));
             _comandoIti.Parameters.Add(new SqlParameter("@volcarg", volcarga));
             _comandoIti.Parameters.Add(new SqlParameter("@voldescarg", voldescarga));
             _comandoIti.Parameters.Add(new SqlParameter("@nrosolicitud", nrosolicitud));

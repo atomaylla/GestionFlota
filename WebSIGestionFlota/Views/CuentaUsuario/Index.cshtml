@@ -1,8 +1,8 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@section scripts {
 
+    <script src="~/Scripts/page.js"></script>
+
+}
 
 
 
@@ -14,22 +14,29 @@
         <div><h3>Acceso al Sistema</h3></div>
 
         <div class="form-group">
-            <div id="dialog-form" style="">
-                <form id="formlogin" action="/CuentaUsuario/Login" method="post">
+            <div >
+                <form id="formlogin" action="/CuentaUsuario/Login" method="post" onsubmit="return validarformlogin()">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Usuario</label>
-                        <input type="text" class="form-control" name="nomusuario">
+                        <input type="text" class="form-control" id="nomusuario" name="nomusuario" value="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Contraseña</label>
-                        <input type="password" class="form-control" name="contrausuario">
+                        <input type="password" class="form-control" id="contrausuario" name="contrausuario" value="">
                     </div>
                    
-                    <button id="agreite" type="submit" class="btn btn-default">Ingresar</button>
+                    <button id="ingresarusu" type="submit" class="btn btn-default">Ingresar</button>
                 </form>
             </div>
+            <p>@TempData["message"]</p>
         </div>
 
+        <div id="dialog" title="Mensaje">
+            <p></p>
+        </div>
+        <div id="dialog-confirm" title="Empty the recycle bin?">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span></p>
+        </div>
     </div>
 </div>
 

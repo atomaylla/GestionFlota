@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
+
     public class Solicitud
     {
         public int nroSolicitud { get; set; }
-
+      
         public DateTime fechaServicio { get; set; }
 
         public int codCliente { get; set; }

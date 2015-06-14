@@ -15,7 +15,7 @@
         </ul>
     </div>
     <div class="col-md-9 " style="border:0px solid #000;">
-        <div><h3>Registrar Solicitud de Planificación</h3></div>
+        <div><h3>Solicitud de Planificación</h3></div>
         <form action="/SolicitudProgramacion/Enviar" method="post" onsubmit="return validarform(); ">
             <div class="form-group">
                 <label for="exampleInputPassword1">Cliente</label>
@@ -42,7 +42,14 @@
                     <option value="2">GLP</option>
                 </select>
             </div>
-
+            <div class="form-group">
+                <label for="exampleInputPassword1">Tipo de Viaje</label>
+                <select id="cbotipoviaje" name="cbotipoviaje" class="form-control">
+                    <option value="0">Seleccionar</option>
+                    <option value="1">Viaje Local</option>
+                    <option value="2">Viaje Provincial</option>
+                </select>
+            </div>
             <div class="form-group">
                
                 <div><button id="agregar-iti" onclick="return false">Agregar Itinerario</button></div>
@@ -82,48 +89,82 @@
 
         </form>
         <div id="dialog-form" style="">
-            <form id="formitinerario" onsubmit="return false">
+            <form id="formitinerario" onsubmit="return validaritinerario()">
                 <p>Agregar Itinerario</p>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Fecha de Itinerario</label>
                     <input type="text" class="form-control" name="fechaservicio" id="datepickeriti">
                 </div>
                 <div class="form-group">
+                    <label for="exampleInputEmail1">Hora de Salida</label>
+                    <select name="horasalida" id="horasalida" class="form-control">
+                        <option value="">Seleccionar</option>
+                        <option value="0">12:00 am</option>
+                        <option value="1">1:00 am</option>
+                        <option value="2">2:00 am</option>
+                        <option value="3">3:00 am</option>
+                        <option value="4">4:00 am</option>
+                        <option value="5">5:00 am</option>
+                        <option value="6">6:00 am</option>
+                        <option value="7">7:00 am</option>
+                        <option value="8">8:00 am</option>
+                        <option value="9">9:00 am</option>
+                        <option value="10">10:00 am</option>
+                        <option value="11">11:00 am</option>
+                        <option value="12">12:00 pm</option>
+                        <option value="13">1:00 pm</option>
+                        <option value="14">2:00 pm</option>
+                        <option value="15">3:00 pm</option>
+                        <option value="16">4:00 pm</option>
+                        <option value="17">5:00 pm</option>
+                        <option value="18">6:00 pm</option>
+                        <option value="19">7:00 pm</option>
+                        <option value="20">8:00 pm</option>
+                        <option value="21">9:00 pm</option>
+                        <option value="22">10:00 pm</option>
+                        <option value="23">11:00 pm</option>
+                        
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="exampleInputEmail1">Punto Origen</label>
-                    <select name="origen" class="form-control">
+                    <select name="origen" id="origen" class="form-control">
                         <option value="0">Seleccionar</option>
-                        <option value="Base Pampilla">Base Pampilla</option>
-                        <option value="Base Pampilla">Local Cliente</option>
-                        <option value="Base Pampilla">Base</option>
+                        <option value="basepampilla">Base Pampilla</option>
+                        <option value="localcliente">Local Cliente</option>
+                        <option value="base">Base</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Punto Destino</label>
-                    <select name="destino" class="form-control">
+                    <select name="destino" id="destino" class="form-control">
                         <option value="0">Seleccionar</option>
-                        <option value="Base Pampilla">Base Pampilla</option>
-                        <option value="Base Pampilla">Local Cliente</option>
-                        <option value="Base Pampilla">Base</option>
+                        <option value="basepampilla">Base Pampilla</option>
+                        <option value="localcliente">Local Cliente</option>
+                        <option value="base">Base</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de Acciion</label>
-                    <input type="radio" name="tipoaccion" value="carga"/>Carga
-                    <input type="radio" name="tipoaccion" value="descarga"/>Descarga
+                    <input type="radio" name="tipoaccion" id="tipoaccion" value="carga"/>Carga
+                    <input type="radio" name="tipoaccion" id="tipoaccion" value="descarga"/>Descarga
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Cantidad</label>
-                    <input type="text" class="form-control" name="cantidad" >
+                    <input type="text" class="form-control" name="cantidad" id="cantidad" >
                 </div>
                 <button id="agreite" type="submit" class="btn btn-default">Agregar</button>
-                <button id="agreite" type="submit" class="btn btn-default">Cancelar</button>
+                <button id="cancite" type="submit" class="btn btn-default">Cancelar</button>
             </form>
         </div>
+        <div id="dialogitinerario" title="Mensaje">
+            <p></p>
+        </div>
         <div id="dialog" title="Mensaje">
-            <p>prueba</p>
+            <p></p>
         </div>
         <div id="dialog-confirm" title="Empty the recycle bin?">
-            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Confirmar el envio de la solicitud?</p>
         </div>
     </div>
 </div>

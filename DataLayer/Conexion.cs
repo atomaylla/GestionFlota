@@ -24,11 +24,7 @@ namespace DataLayer
             
 
         }
-        //public SqlConnection conectar(){
-        //    //dbconexion = new SqlConnection(ConfigurationManager.ConnectionStrings["cn"].ConnectionString);
-        //    dbconexion = new SqlConnection(ConfigurationManager.ConnectionStrings["cn"].ConnectionString);
-        //    return dbconexion;
-        //}
+       
         public void Abrir() {
             if (dbconexion.State == ConnectionState.Open)
             {
@@ -73,6 +69,11 @@ namespace DataLayer
             }
             catch {
                 throw;
+            }
+            finally
+            {
+              
+                ocommand.Connection.Close();
             }
             return Lector;
         }
@@ -152,14 +153,19 @@ namespace DataLayer
             //ocommand.Connection = dbconexion;
             //ocommand.CommandType = tipoComando;
             //ocommand.CommandText = consulta;
+            //comando.Cancel();
+          //  comando.Connection.Dispose();
+
+
             try
             {
                 dtreader = comando.ExecuteReader();
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
+           
             return dtreader;
         }
         

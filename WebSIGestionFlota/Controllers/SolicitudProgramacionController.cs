@@ -25,6 +25,7 @@ namespace WebSIGestionFlota.Controllers
         public List<Solicitud> listsolicitud = new List<Solicitud>();
         public ActionResult Index()
         {
+            Session.Remove("listitinerarios");
           //  listiti = new List<Itinerario>();
             listsolicitud = nSolicitud.obtenerSolicitudes('0');
             ViewData["Solicitudes"]=listsolicitud;
@@ -45,6 +46,7 @@ namespace WebSIGestionFlota.Controllers
         {
             int codcliente = int.Parse(Request["cboclientes"]);
             DateTime fechainicio = Convert.ToDateTime(Request["fechaservicio"].ToString());
+            
             int codtiposervicio = int.Parse(Request["cbotiposervicio"]);
             
             Int32 idsolicitud = nSolicitud.registarSolicitud(codcliente, fechainicio, codtiposervicio);
@@ -57,9 +59,10 @@ namespace WebSIGestionFlota.Controllers
                 string origend= iti.origen.ToString();
                 string destinod= iti.destino.ToString();
                 DateTime fechaserviciod= Convert.ToDateTime(iti.fechaServicio);
+                string horasalida = iti.horaSalida.ToString();
                 string volcargadod= iti.cantidad.ToString();
                 string voldescargad= iti.cantidad.ToString();
-               nSolicitud.registrarItinerario(origend,destinod, fechaserviciod, volcargadod,voldescargad,idsolicitud);
+               nSolicitud.registrarItinerario(origend,destinod, fechaserviciod,horasalida, volcargadod,voldescargad,idsolicitud);
 
             }
             
@@ -80,7 +83,7 @@ namespace WebSIGestionFlota.Controllers
             
             Itinerario itiadd = new Itinerario();
             // iter.itinerarios= new List<Itinerario>();
-             itiadd=new Itinerario{origen= itiner.origen, destino= itiner.destino,fechaServicio= itiner.fechaServicio,tipoAccion=itiner.tipoAccion,cantidad=itiner.cantidad};
+             itiadd=new Itinerario{origen= itiner.origen, destino= itiner.destino,fechaServicio= itiner.fechaServicio,horaSalida= itiner.horaSalida,tipoAccion=itiner.tipoAccion,cantidad=itiner.cantidad};
 
              listitinerarios.Add(itiadd);
             //return RedirectToAction("Index", "SolicitudProgramacion");

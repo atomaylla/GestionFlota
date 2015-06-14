@@ -49,6 +49,11 @@ display:block;
   background: #FFF;
   padding: 20px;
   width:auto;
-  max-width: 500px;
+  max-width: 600px;
   margin: 20px auto;
+}
+#dialog-form {
+
+max-height:600px !important;
+height:auto !important;
 }

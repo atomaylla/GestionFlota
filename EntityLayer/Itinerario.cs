@@ -16,6 +16,8 @@ namespace EntityLayer
 
         public DateTime fechaServicio { get; set; }
 
+        public string horaSalida { get; set; }
+
         public string tipoAccion { get; set; }
 
         public string cantidad { get; set; }

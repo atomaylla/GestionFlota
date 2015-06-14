@@ -15,6 +15,7 @@ namespace WebSIGestionFlota.Controllers
         NUsuario nuser = new NUsuario();
         public ActionResult Index()
         {
+            //Session.Remove("iduser");
             return View();
         }
         [HttpPost]
@@ -23,23 +24,40 @@ namespace WebSIGestionFlota.Controllers
               string contrauser = Request["contrausuario"].ToString();
               Usuario user =nuser.LoginUsuario(nombreuser,contrauser);
 
-              if (user != null) {
+              if (user.codUsuario != 0)
+              {
                   string desuser = user.desUsuario;
                   int codUser = user.codUsuario;
                   if (desuser == "admin")
                   {
                       ViewData["rol"] = 1;
                   }
-                  else {
+                  else
+                  {
                       ViewData["rol"] = 2;
                   }
-                  Session["idUser"]=codUser;
+                  Session["idUser"] = codUser;
+                  
+                  return View("~/Views/CuentaUsuario/Login.cshtml");
               }
-              else
-              {
+              else {
+                  TempData["message"] = "Datos incorrectos";
+                 return  RedirectToAction("Index", "CuentaUsuario");
+                  //return View("~/Views/CuentaUsuario/Index.cshtml");
+              }
+              
+              //else
+              //{
+              //    return RedirectToAction("Index", "CuentaUsuario");
 
-              }
-            return View();
+              //}
+            
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("iduser");
+            return RedirectToAction("Index", "CuentaUsuario");
         }
 	}
 }

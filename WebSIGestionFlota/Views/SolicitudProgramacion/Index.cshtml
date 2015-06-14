@@ -17,14 +17,14 @@
 <div class="col-md-12">
     <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked">
-            <li>@Html.ActionLink("Listado Solicitud", "Index", "SolicitudProgramacion")</li>
-            <li>@Html.ActionLink("Registrar Solicitud de Planificación", "Registrar", "SolicitudProgramacion")</li>
+            <li>@Html.ActionLink("Listar Solicitudes", "Index", "SolicitudProgramacion")</li>
+            <li>@Html.ActionLink("Registrar Solicitud ", "Registrar", "SolicitudProgramacion")</li>
 
         </ul>
     </div>
     <div class="col-md-9 " style="border:0px solid #000;">
 
-        <div><h3>Listado Solicitud Programación</h3></div>
+        <div><h3>Solicitudes de Planificación de Programación</h3></div>
 
         <div class="form-group">
             <div class="table-responsive">
@@ -43,7 +43,7 @@
                         foreach (var item in (List<EntityLayer.Solicitud>)@ViewData["Solicitudes"]) { 
                         <tr>
                             <th scope="row">@counter</th>
-                            <td> @item.fechaServicio</td>
+                            <td>@item.fechaServicio</td>
                             <td>@item.razonCliente</td>
                             <td>@item.nomTipoServicio</td>
                             <td><a href="#">Editar</a>|<a href="#">Eliminar</a></td>
