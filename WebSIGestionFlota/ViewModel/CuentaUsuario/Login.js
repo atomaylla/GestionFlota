@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-        //Login
+        //Login 
    var validator = $("#window").kendoValidator().data("kendoValidator");
          
             
