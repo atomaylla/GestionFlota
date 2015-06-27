@@ -43,6 +43,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="MD_Planificacion.cs" />
     <Compile Include="MD_Solicitud.cs" />
+    <Compile Include="MD_TipoServicio.cs" />
     <Compile Include="MD_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

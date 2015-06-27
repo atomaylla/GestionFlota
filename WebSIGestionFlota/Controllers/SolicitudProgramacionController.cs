@@ -27,7 +27,7 @@ namespace WebSIGestionFlota.Controllers
         {
             Session.Remove("listitinerarios");
           //  listiti = new List<Itinerario>();
-            listsolicitud = nSolicitud.obtenerSolicitudes('0');
+           // listsolicitud = nSolicitud.obtenerSolicitudes('0');
             ViewData["Solicitudes"]=listsolicitud;
             return View();
         }

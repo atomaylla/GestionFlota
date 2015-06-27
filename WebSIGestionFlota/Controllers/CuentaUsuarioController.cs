@@ -10,24 +10,25 @@ namespace WebSIGestionFlota.Controllers
 {
     public class CuentaUsuarioController : Controller
     {
-        //
-        // GET: /CuentaUsuario/
+     
         NUsuario nuser = new NUsuario();
-        public ActionResult Index()
-        {
-            //Session.Remove("iduser");
-            return View();
+        public ActionResult Login()
+        {           
+            return View("Login");
         }
-        [HttpPost]
-        public ActionResult Login() {
-              string nombreuser= Request["nomusuario"].ToString();
-              string contrauser = Request["contrausuario"].ToString();
-              Usuario user =nuser.LoginUsuario(nombreuser,contrauser);
 
-              if (user.codUsuario != 0)
+
+            [HttpPost]
+        public JsonResult Logueo(string user, string pass){
+              string nombreuser= Convert.ToString(user);
+              string contrauser = Convert.ToString(pass);
+
+              Usuario usuario =nuser.LoginUsuario(nombreuser,contrauser);
+
+              if (usuario.codUsuario != 0)
               {
-                  string desuser = user.desUsuario;
-                  int codUser = user.codUsuario;
+                  string desuser = usuario.desUsuario;
+                  int codUser = usuario.codUsuario;
                   if (desuser == "admin")
                   {
                       ViewData["rol"] = 1;
@@ -37,27 +38,17 @@ namespace WebSIGestionFlota.Controllers
                       ViewData["rol"] = 2;
                   }
                   Session["idUser"] = codUser;
-                  
-                  return View("~/Views/CuentaUsuario/Login.cshtml");
-              }
-              else {
-                  TempData["message"] = "Datos incorrectos";
-                 return  RedirectToAction("Index", "CuentaUsuario");
-                  //return View("~/Views/CuentaUsuario/Index.cshtml");
-              }
-              
-              //else
-              //{
-              //    return RedirectToAction("Index", "CuentaUsuario");
 
-              //}
-            
+                  
+              }
+
+              return Json(usuario);
         }
 
         public ActionResult Logout()
         {
             Session.Remove("iduser");
-            return RedirectToAction("Index", "CuentaUsuario");
+            return RedirectToAction("Login");
         }
 	}
 }

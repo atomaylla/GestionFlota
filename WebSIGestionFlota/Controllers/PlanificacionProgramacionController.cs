@@ -5,28 +5,46 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLayer;
 using EntityLayer;
+using System.Globalization;
 
 namespace WebSIGestionFlota.Controllers
 {
     public class PlanificacionProgramacionController : Controller
     {
-        //
-        // GET: /PlanificacionProgramacion/
 
-        NPlanificacion nPlanificacion = new NPlanificacion();
-        NSolicitud nSolicitud = new NSolicitud();
-        public List<Solicitud> listsolicitud = new List<Solicitud>();
-        //public List<Conductor> listconductor = new List<Conductor>();
         public ActionResult Index()
         {
-            listsolicitud = nSolicitud.obtenerSolicitudes('1');
-            ViewData["Solicitudes"] = listsolicitud;
-            return View();
-           
+
+            NTipoServicio ntipoServicio = new NTipoServicio();
+            SelectList selectTipoServicioList = new SelectList(ntipoServicio.obtenerTipoServicio(), "codigo", "descripcion");
+            ViewData["selectTipoServicioList"] = selectTipoServicioList; 
+            return View("Index");
         }
+
+        public JsonResult ListSolicitudes(String fecha, String tipoServicio, String option)
+        {
+             List<Solicitud> listsolicitud = new List<Solicitud>();
+            DateTime _fecha = DateTime.Parse(fecha, CultureInfo.InvariantCulture);
+            int _tipoServicio = Convert.ToInt32(tipoServicio);          
+            NSolicitud nSolicitud = new NSolicitud();
+
+            if (option.Equals("fecha_servicio"))
+            {
+                listsolicitud = nSolicitud.obtenerSolicitudesFechaEstado(_fecha,1);
+            }
+            else if (option.Equals("tipo_servicio"))
+            {
+                listsolicitud = nSolicitud.obtenerSolicitudesTipoEstado(_tipoServicio, 1);
+            }
+            return Json(listsolicitud, JsonRequestBehavior.AllowGet);
+
+        }
+             
 
          [HttpPost]
         public ActionResult Cargar(int nroSolicitud) {
+
+            NPlanificacion nPlanificacion = new NPlanificacion();
             List<Conductor> listconductores = nPlanificacion.obtenerConductores(nroSolicitud);
             List<TractorCisterna> listtractorcisterna = nPlanificacion.obtenerTractorCisternas(nroSolicitud);
              Session["nroSolicitud"] = nroSolicitud;

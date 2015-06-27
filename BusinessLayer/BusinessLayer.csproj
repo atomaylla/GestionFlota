@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NPlanificacion.cs" />
+    <Compile Include="NTipoServicio.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NSolicitud.cs" />

@@ -20,14 +20,14 @@ namespace WebSIGestionFlota.Controllers
         }
 
         public ActionResult SolicitudesAprobadas() {
-            listsolicitud = nSolicitud.obtenerSolicitudes('1');
+           // listsolicitud = nSolicitud.obtenerSolicitudes('1');
             ViewData["Solicitudes"] = listsolicitud;
             return View();
            
         }
 
         public ActionResult SolicitudesRechazadas() {
-            listsolicitud = nSolicitud.obtenerSolicitudes('2');
+           // listsolicitud = nSolicitud.obtenerSolicitudes('2');
             ViewData["Solicitudes"] = listsolicitud;
             return View();
         }
@@ -38,11 +38,11 @@ namespace WebSIGestionFlota.Controllers
             if (opcionlist == "fecha")
             {
                 DateTime fechaser = Convert.ToDateTime(fechaservicio);
-                listsolicitud = nSolicitud.obtenerSolicitudesFecha(fechaser);
+                listsolicitud = nSolicitud.obtenerSolicitudesFechaEstado(fechaser,0);
                 ViewData["Solicitudes"] = listsolicitud;
             }
             else {
-                listsolicitud = nSolicitud.obtenerSolicitudesTipo(tiposervicio);
+                listsolicitud = nSolicitud.obtenerSolicitudesTipoEstado(tiposervicio,0);
                 ViewData["Solicitudes"] = listsolicitud;
             }
 

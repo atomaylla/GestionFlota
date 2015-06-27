@@ -45,6 +45,7 @@
     <Compile Include="Planificacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solicitud.cs" />
+    <Compile Include="TipoServicio.cs" />
     <Compile Include="TractorCisterna.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

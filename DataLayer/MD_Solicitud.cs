@@ -13,17 +13,14 @@ namespace DataLayer
     {
         Conexion oaccesodedatos = new Conexion();
 
-        //public DataTable ObtenerClientes()
-        //{
-        //    SqlCommand _comando = oaccesodedatos.CrearComando(CommandType.Text, "SELECT * FROM cliente");
-
-        //    return oaccesodedatos.EjecutarComandoSelect(_comando);
-        //}
-        public List<Solicitud> obtenerSolicitudes(char estado) {
+       
+        public List<Solicitud> obtenerSolicitudesEstado(char estado) {
 
             List<Solicitud> lstsolicitudes = new List<Solicitud>();
-            SqlCommand _comando = oaccesodedatos.CrearComando(CommandType.StoredProcedure, "listarsolicitudes");
-            _comando.Parameters.Add(new SqlParameter("@estado", estado));
+            SqlCommand _comando = oaccesodedatos.CrearComando(CommandType.StoredProcedure, "listarsolicitudesestado");
+            _comando.Parameters.Add(new SqlParameter("@estado", estado));     
+                   
+                        
             SqlDataReader dr = oaccesodedatos.ExecuteReaderSelect(_comando);
             while (dr.Read())
             {
@@ -39,12 +36,13 @@ namespace DataLayer
             return lstsolicitudes;
         }
 
-        public List<Solicitud> obtenerSolicitudesFecha(DateTime fechaservicio)
+        public List<Solicitud> obtenerSolicitudesFechaEstado(DateTime fechaservicio, int estado)
         {
 
             List<Solicitud> lstsolicitudes = new List<Solicitud>();
-            SqlCommand _comando = oaccesodedatos.CrearComando(CommandType.StoredProcedure, "listarsolicitudesfecha");
+            SqlCommand _comando = oaccesodedatos.CrearComando(CommandType.StoredProcedure, "listarsolicitudesfechaestado");
             _comando.Parameters.Add(new SqlParameter("@fechaservicio", fechaservicio));
+            _comando.Parameters.Add(new SqlParameter("@estado", estado));
             SqlDataReader dr = oaccesodedatos.ExecuteReaderSelect(_comando);
             while (dr.Read())
             {
@@ -59,12 +57,13 @@ namespace DataLayer
 
             return lstsolicitudes;
         }
-        public List<Solicitud> obtenerSolicitudesTipo(int tiposervicio)
+        public List<Solicitud> obtenerSolicitudesTipoEstado(int tiposervicio, int estado)
         {
 
             List<Solicitud> lstsolicitudes = new List<Solicitud>();
-            SqlCommand _comando = oaccesodedatos.CrearComando(CommandType.StoredProcedure, "listarsolicitudestipo");
+            SqlCommand _comando = oaccesodedatos.CrearComando(CommandType.StoredProcedure, "listarsolicitudestipoestado");
             _comando.Parameters.Add(new SqlParameter("@tiposervicio", tiposervicio));
+            _comando.Parameters.Add(new SqlParameter("@estado", estado));
             SqlDataReader dr = oaccesodedatos.ExecuteReaderSelect(_comando);
             while (dr.Read())
             {
